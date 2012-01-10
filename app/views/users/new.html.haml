@@ -1,0 +1,24 @@
+%h1 Sign up
+
+= form_for @user do |f|
+  -if @user.errors.any?
+    %div.errors_messages
+    %h3 Form is invalid
+    %ul
+      -for mess in @user.errors.full_messages
+        %li=mess
+            
+  =f.label :email
+  %br/
+  =f.text_field :email
+  %br/
+  =f.label :password
+  %br/
+  =f.password_field :password
+  %br/
+  = f.label :password_confirmation
+  %br/
+  =f.password_field :password_confirmation 
+  %br/
+  %br/
+  = f.submit
