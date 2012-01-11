@@ -1,0 +1,13 @@
+%h1 Stories
+
+-if @stories.present?
+  %ul
+    -@stories.each do |story|
+      %li
+        =story.title
+        =link_to "Show", story_path(story)
+        =link_to "Edit", edit_story_path(story)
+        =link_to "Delete", story, :method => 'delete'
+
+%br/
+=link_to "New", new_story_path

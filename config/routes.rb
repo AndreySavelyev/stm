@@ -6,6 +6,7 @@ Stm::Application.routes.draw do
 
   resources :users
   resources :sessions
+  resources :stories
   root :to => "users#index"
 
  end
