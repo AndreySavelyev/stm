@@ -6,17 +6,20 @@
     = javascript_include_tag "application"
     = csrf_meta_tags
   %body
-    - flash.each do |name, message|
-      =content_tag :div, message, :id => "flash#{name}"
-
-    -if current_user
-      You logged as
-      =current_user.email
-      |
-      =link_to "Logout", logout_path
-    -else
-      =link_to "Signup", signup_path
-      or 
-      =link_to "Login", login_path
+  
+    %div.flash
+      - flash.each do |name, message|
+        =content_tag :div, message, :id => "flash#{name}"
+    %br/
+    %div.user_nav
+      -if current_user
+        You logged as
+        =current_user.email
+        |
+        =link_to "Logout", logout_path
+      -else
+        =link_to "Signup", signup_path
+        or 
+        =link_to "Login", login_path
 
     =yield

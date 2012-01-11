@@ -5,3 +5,11 @@
  *= require_self
  *= require_tree . 
 */
+
+.user_nav{
+	float:right;
+}
+
+.flash{
+	float:right;
+}
