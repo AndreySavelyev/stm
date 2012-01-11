@@ -11,13 +11,13 @@
 %br/
 -case @story.state
 -when "new"
-  =button_to "Start", start_story_path(@story)
+  =button_to "Start", start_story_path(@story), {:class => 'btn'}
 -when 'started'
-  =button_to "Finish", finish_story_path(@story)
+  =button_to "Finish", finish_story_path(@story), {:class => 'btn primary'}
 -when 'finished'
-  =button_to "Accept", accept_story_path(@story)
+  =button_to "Accept", accept_story_path(@story), {:class => 'btn success'}
   or
-  =button_to "Decline", reject_story_path(@story)
+  =button_to "Decline", reject_story_path(@story), {:class => 'btn danger'}
 
   
 %br/

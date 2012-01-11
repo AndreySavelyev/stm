@@ -1,18 +1,24 @@
 %h1 Stories
 
 -if @stories.present?
-  %ul
+  %table.zebra-striped.bordered-table
+    %thead
+      %tr
+        %th Title
+        %th State
+        %th User
+        %th
+        %th
+        %th
     -@stories.each do |story|
-      %li
-        =story.title
-        =story.state
-        =link_to "Show", story_path(story)
-        =link_to "Edit", edit_story_path(story)
-        =link_to "Delete", story, :method => 'delete'
-        -if story.user
-          Responsible user:
-          =story.user.email
-      %br/
+      %tr
+        %td=story.title
+        %td=story.state
+        %td=story.user.try(:email)
+        %td=link_to "Show", story_path(story)
+        %td=link_to "Edit", edit_story_path(story)
+        %td=link_to "Delete", story, :method => 'delete'
+
 
 %br/
 =link_to "New", new_story_path

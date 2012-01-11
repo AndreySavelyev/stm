@@ -1,5 +1,5 @@
 %h1 Log in
-=form_tag sessions_path do
+=form_tag sessions_path, {:class => 'form-stacked'} do
   %p
     =label_tag :email
     %br/
@@ -9,4 +9,4 @@
     %br/
     =password_field_tag :password
   %p
-    =submit_tag
+    =submit_tag "Log in", {:class => "btn"}

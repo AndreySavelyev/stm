@@ -1,6 +1,6 @@
 %h1 Sign up
 
-= form_for @user do |f|
+= form_for @user, :html =>{:class => 'form-stacked'} do |f|
   -if @user.errors.any?
     %div.errors_messages
     %h3 Form is invalid
@@ -21,4 +21,4 @@
   =f.password_field :password_confirmation 
   %br/
   %br/
-  = f.submit
+  = f.submit "Sign up", {:class => "btn" }
