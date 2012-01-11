@@ -6,7 +6,14 @@ Stm::Application.routes.draw do
 
   resources :users
   resources :sessions
-  resources :stories
+  resources :stories do
+    member do
+      post 'start'
+      post 'finish'
+      post 'accept'
+      post 'reject'      
+    end
+  end
   root :to => "stories#index"
 
  end

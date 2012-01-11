@@ -7,6 +7,7 @@ class StoriesController < ApplicationController
   
   def new
     @story = Story.new
+    @users = User.active
   end
   
   def create
@@ -20,6 +21,7 @@ class StoriesController < ApplicationController
   
   def edit
     @story = Story.find(params[:id])
+    @users = User.active
   end
   
   def update
@@ -40,6 +42,30 @@ class StoriesController < ApplicationController
   
   def show
     @story = Story.find(params[:id])
+  end
+  
+  def start
+    @story = Story.find(params[:id])
+    @story.start!(current_user)
+    redirect_to stories_url
+  end
+  
+  def finish
+    @story = Story.find(params[:id])
+    @story.finish!
+    redirect_to stories_url
+  end
+  
+  def accept
+    @story = Story.find(params[:id])
+    @story.accept!
+    redirect_to stories_url
+  end
+  
+  def reject
+    @story = Story.find(params[:id])
+    @story.reject!
+    redirect_to stories_url
   end
 
 end

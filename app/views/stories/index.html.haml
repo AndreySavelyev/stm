@@ -5,9 +5,14 @@
     -@stories.each do |story|
       %li
         =story.title
+        =story.state
         =link_to "Show", story_path(story)
         =link_to "Edit", edit_story_path(story)
         =link_to "Delete", story, :method => 'delete'
+        -if story.user
+          Responsible user:
+          =story.user.email
+      %br/
 
 %br/
 =link_to "New", new_story_path

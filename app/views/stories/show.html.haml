@@ -1,7 +1,24 @@
 %h1 Story: #{@story.title}
 
 %div
-  =@story.description
+  Description:
+  %p
+    =@story.description
+  %br/
+  -if @story.user
+    User:
+    =@story.user.try(:email)
+%br/
+-case @story.state
+-when "new"
+  =button_to "Start", start_story_path(@story)
+-when 'started'
+  =button_to "Finish", finish_story_path(@story)
+-when 'finished'
+  =button_to "Accept", accept_story_path(@story)
+  or
+  =button_to "Decline", reject_story_path(@story)
+
   
 %br/
 =link_to "Back to stories", stories_path
