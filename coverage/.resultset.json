@@ -357,6 +357,7 @@
         1,
         1,
         1,
+        1,
         null
       ],
       "/Users/TAHK/Work/Undev/stm/config/routes.rb": [
@@ -574,7 +575,7 @@
         null
       ]
     },
-    "timestamp": 1326363632
+    "timestamp": 1326373176
   },
   "Functional Tests": {
     "coverage": {
