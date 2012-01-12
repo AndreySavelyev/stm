@@ -19,6 +19,9 @@
         %td=link_to "Edit", edit_story_path(story)
         %td=link_to "Delete", story, :method => 'delete'
 
+-if current_user
+  =render :partial => 'filter', :locals => {:users => @users, :states => @states}
+
 
 %br/
 =link_to "New", new_story_path

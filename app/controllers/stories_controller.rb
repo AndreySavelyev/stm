@@ -3,8 +3,25 @@ class StoriesController < ApplicationController
 
   def index
     @stories = Story.all
+    @users = User.all
+    @states = %w( new started finished accepted rejected)
   end
-  
+
+  def filter
+    if params[:user_id].present? && params[:state].present?
+      @stories = Story.where(:user_id => params[:user_id], :state => params[:state])
+    elsif params[:state].present?
+      @stories = Story.where(:state => params[:state])
+    elsif params[:user_id].present?
+      @stories = Story.where(:user_id => params[:user_id])      
+    else
+      @stories = Story.all
+    end
+    @users = User.all
+    @states = %w( new started finished accepted rejected)
+    render :action => 'index'
+  end
+
   def new
     @story = Story.new
     @users = User.active

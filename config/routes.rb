@@ -11,8 +11,9 @@ Stm::Application.routes.draw do
       post 'start'
       post 'finish'
       post 'accept'
-      post 'reject'      
+      post 'reject'
     end
+    post 'filter', :on => :collection
   end
   root :to => "stories#index"
 
