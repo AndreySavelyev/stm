@@ -1,6 +1,7 @@
 class Story < ActiveRecord::Base
   belongs_to :user
   after_create :set_state!
+  validates_presence_of :title
   
   def set_state!
     self.state = "new"

@@ -1,4 +1,11 @@
 =form_for @story, :html =>{:class => 'form-stacked'} do |f|
+  -if @story.errors.any?
+    %div.errors_messages
+    %h3 Form is invalid
+    %ul
+      -for mess in @story.errors.full_messages
+        %li=mess
+
   =f.label :title
   %br/
   =f.text_field :title

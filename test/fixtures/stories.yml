@@ -1,13 +1,22 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  title: MyString
-  description: MyText
-  state: MyString
-  user: 
+  title: StoryTitle
+  description: Storydescription
+  state: new
 
 two:
-  title: MyString
-  description: MyText
-  state: MyString
-  user: 
+  title: storyWithTitle
+  description: description
+  state: new
+
+started:
+  title: it is started story
+  description: description
+  state: started
+  
+finished:
+  title: it is finished story
+  description: description
+  state: finished
+  

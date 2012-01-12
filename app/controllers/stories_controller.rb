@@ -15,8 +15,9 @@ class StoriesController < ApplicationController
     if  @story.save
       redirect_to stories_url, :notice => "Story successfully created"
     else
+      @users = User.active
       render "new"
-    end 
+    end
   end
   
   def edit
@@ -30,6 +31,7 @@ class StoriesController < ApplicationController
     if @story.save
       redirect_to stories_url, :notice => "Story successfully updated"
     else
+      @users = User.active
       render 'edit'
     end
   end
