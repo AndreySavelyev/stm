@@ -7,36 +7,39 @@ class UsersControllerTest < ActionController::TestCase
   end
 
   test "should post create valid user" do
-    users_count = User.count
-    post :create, :user => {:email => 'mail2mail@mail.ru', :password => '123', :password_confirmation => '123'}
-    assert_response :redirect, root_url
+    @user = FactoryGirl.attributes_for(:not_registered_user)
+    assert_difference "User.count" do
+      post :create, :user => @user
+    end
     assert_equal "Signed up!", flash[:notice]
-    assert_equal User.count, users_count + 1
-    assert_equal session[:user_id], User.find_by_email('mail2mail@mail.ru').id
+    assert_equal session[:user_id], User.find_by_email(@user[:email]).id
+    assert_response :redirect, root_url
   end
   
   test "try create user with existing email" do
-    # 'mail@mail.ru' - user from fixtures
-    users_count = User.count
-    post :create, :user => {:email => 'mail@mail.ru', :password => '123', :password_confirmation => '123'}
+    @user = FactoryGirl.create(:registered_user)
+    assert_no_difference "User.count" do
+      post :create, :user => {:email => @user.email, :password => '123', :password_confirmation => '123'}
+    end
     assert_response :success
-    assert_equal User.count, users_count
     assert_equal session[:user_id], nil
   end
   
   test "try create user with different password and password_confirmation" do
-    users_count = User.count
-    post :create, :user => {:email => 'mail2mail@mail.ru', :password => '123', :password_confirmation => '124'}
+    @user = FactoryGirl.attributes_for(:not_registered_user_with_invalid_pass)
+    assert_no_difference "User.count" do
+      post :create, :user => @user
+    end
     assert_response :success
-    assert_equal User.count, users_count
     assert_equal session[:user_id], nil
   end
 
   test "try create user with blank password and password_confirmation" do
-    users_count = User.count
-    post :create, :user => {:email => 'mail2mail@mail.ru', :password => '', :password_confirmation => ''}
+    @user = FactoryGirl.attributes_for(:user)
+    assert_no_difference "User.count" do
+      post :create, :user => @user
+    end
     assert_response :success
-    assert_equal User.count, users_count
     assert_equal session[:user_id], nil
   end
 

@@ -20,6 +20,8 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 
 gem 'unicorn'
 
+gem 'configus'
+
 # Deploy with Capistrano
 # gem 'capistrano'
 
@@ -29,5 +31,6 @@ gem 'unicorn'
 group :test do
   # Pretty printed test output
   gem 'turn', '~> 0.8.3', :require => false
-  gem 'simplecov', :require => false, :group => :test  
+  gem 'simplecov', :require => false, :group => :test
+  gem "factory_girl_rails", "~> 1.2"
 end

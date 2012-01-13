@@ -8,15 +8,7 @@ class StoriesController < ApplicationController
   end
 
   def filter
-    if params[:user_id].present? && params[:state].present?
-      @stories = Story.where(:user_id => params[:user_id], :state => params[:state])
-    elsif params[:state].present?
-      @stories = Story.where(:state => params[:state])
-    elsif params[:user_id].present?
-      @stories = Story.where(:user_id => params[:user_id])      
-    else
-      @stories = Story.all
-    end
+    @stories = Story.filter(params[:user_id], params[:state])
     @users = User.all
     @states = %w( new started finished accepted rejected)
     render :action => 'index'

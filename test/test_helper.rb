@@ -12,7 +12,7 @@ class ActiveSupport::TestCase
   fixtures :all
 
   def login_user
-    session[:user_id] = User.find_by_email('mail@mail.ru').id
+    session[:user_id] = FactoryGirl.create(:registered_user)
   end
 
   # Add more helper methods to be used by all tests here...

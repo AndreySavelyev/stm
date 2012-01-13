@@ -8,6 +8,18 @@ class Story < ActiveRecord::Base
     save
   end
   
+  def self.filter(user_id = nil, state = nil)
+    if user_id.present? && state.present?
+      where(:user_id => user_id, :state => state)
+    elsif user_id.present?
+      where(:user_id => user_id)
+    elsif state.present?
+      where(:state => state)
+    else
+      all
+    end
+  end
+  
   def start!(current_user)
     self.update_attributes({:state => 'started', :user_id => current_user.id})
   end
