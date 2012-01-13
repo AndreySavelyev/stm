@@ -15,6 +15,8 @@ Stm::Application.routes.draw do
     end
     post 'filter', :on => :collection
   end
+  resources :comments, :only => [:create, :destroy]
+  
   root :to => "stories#index"
 
  end

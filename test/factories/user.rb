@@ -16,8 +16,5 @@ FactoryGirl.define do
     factory :registered_user do
       password_digest '$2a$10$hOcccvqSWpy2Khfgy80QuODU0QFMOinnKBoG/VjJk0K1IbPfRPsR6'
     end
-
-   
-  end  
-  
+  end
 end

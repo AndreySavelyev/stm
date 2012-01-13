@@ -53,6 +53,8 @@ class StoriesController < ApplicationController
   
   def show
     @story = Story.find(params[:id])
+    @comments = @story.comments
+    @comment = @story.comments.new
   end
   
   def start

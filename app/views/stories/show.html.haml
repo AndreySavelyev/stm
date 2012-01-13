@@ -1,6 +1,6 @@
 %h1 Story: #{@story.title}
 
-%div
+%div.alert-message
   Description:
   %p
     =@story.description
@@ -8,17 +8,33 @@
   -if @story.user
     User:
     =@story.user.try(:email)
-%br/
--case @story.state
--when "new"
-  =button_to "Start", start_story_path(@story), {:class => 'btn'}
--when 'started'
-  =button_to "Finish", finish_story_path(@story), {:class => 'btn primary'}
--when 'finished'
-  =button_to "Accept", accept_story_path(@story), {:class => 'btn success'}
-  or
-  =button_to "Decline", reject_story_path(@story), {:class => 'btn danger'}
+  %br/
+  -case @story.state
+  -when "new"
+    =button_to "Start", start_story_path(@story), {:class => 'btn'}
+  -when 'started'
+    =button_to "Finish", finish_story_path(@story), {:class => 'btn primary'}
+  -when 'finished'
+    =button_to "Accept", accept_story_path(@story), {:class => 'btn success'}
+    or
+    =button_to "Decline", reject_story_path(@story), {:class => 'btn danger'}
 
+-if @comments.present?
+  -@comments.all.each do |comment|
+    %div.comment
+      %b
+        =comment.content
+      %br/
+      %br/
+      =comment.user.email
+      %div{:style => 'float:right'}
+        =link_to 'Delete', comment, :method => 'delete'
+        
+
+%br/
+%br/
+%br/
+=render :partial => 'comments/form'  
   
 %br/
 =link_to "Back to stories", stories_path

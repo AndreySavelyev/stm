@@ -15,10 +15,6 @@ FactoryGirl.define do
       description 'description'
       state 'finished'
     end
-    
-    
-    
-
   end
   
 end
