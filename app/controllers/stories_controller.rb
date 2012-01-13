@@ -57,25 +57,26 @@ class StoriesController < ApplicationController
   
   def start
     @story = Story.find(params[:id])
-    @story.start!(current_user)
+    @story.start
+    @story.user = current_user
     redirect_to stories_url
   end
   
   def finish
     @story = Story.find(params[:id])
-    @story.finish!
+    @story.finish
     redirect_to stories_url
   end
   
   def accept
     @story = Story.find(params[:id])
-    @story.accept!
+    @story.accept
     redirect_to stories_url
   end
   
   def reject
     @story = Story.find(params[:id])
-    @story.reject!
+    @story.reject
     redirect_to stories_url
   end
 

@@ -1,11 +1,29 @@
 class Story < ActiveRecord::Base
   belongs_to :user
-  after_create :set_state!
   validates_presence_of :title
 
-  def set_state!
-    self.state = "new"
-    save
+  state_machine :state, :initial => :new do
+
+    event :start do
+      transition :new => :started
+    end
+     
+    event :finish do
+      transition :started => :finished
+    end
+    
+    event :accept do
+      transition :finished => :accepted
+    end
+    
+    event :reject do
+      transition :finished => :rejected
+    end
+    
+    event :restart do
+      transition :rejected => :started
+    end
+
   end
   
   def self.filter(user_id = nil, state = nil)
@@ -18,22 +36,6 @@ class Story < ActiveRecord::Base
     else
       all
     end
-  end
-  
-  def start!(current_user)
-    self.update_attributes({:state => 'started', :user_id => current_user.id})
-  end
-  
-  def finish!
-    self.update_attributes(:state => 'finished')
-  end
-  
-  def accept!
-    self.update_attributes(:state => 'accepted')
-  end
-  
-  def reject!
-    self.update_attributes(:state => 'rejected')
   end
     
 end
