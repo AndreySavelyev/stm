@@ -3,5 +3,11 @@ class User < ActiveRecord::Base
   has_secure_password
   validates_uniqueness_of :email, :on => :create
   has_many :stories
+  
   scope :active, where(:state => "active")
+  
+  state_machine :state, :initial => :active do
+    
+  end
+  
 end
