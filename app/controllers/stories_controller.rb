@@ -4,13 +4,14 @@ class StoriesController < ApplicationController
   def index
     @stories = Story.all
     @users = User.all
-    @states = %w( new started finished accepted rejected)
+    @states = Story.state_machine.states.map{|s| s.name.to_s }
+    
   end
 
   def filter
     @stories = Story.filter(params[:user_id], params[:state])
     @users = User.all
-    @states = %w( new started finished accepted rejected)
+    @states = Story.state_machine.states.map{|s| s.name.to_s }
     render :action => 'index'
   end
 
