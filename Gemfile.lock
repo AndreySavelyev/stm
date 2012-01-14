@@ -142,4 +142,4 @@ DEPENDENCIES
   state_machine
   turn (~> 0.8.3)
   uglifier (>= 1.0.3)
-  unicorn
+  unicorn (~> 4.1.1)

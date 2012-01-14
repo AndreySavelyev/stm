@@ -18,7 +18,7 @@ gem 'haml'
 # To use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.0.0'
 
-gem 'unicorn'
+gem 'unicorn', '~>4.1.1'
 
 gem 'configus'
 gem 'state_machine'
