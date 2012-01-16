@@ -1,6 +1,6 @@
 class Story < ActiveRecord::Base
+  validates :title, :presence => true
   belongs_to :user
-  validates_presence_of :title
   has_many :comments
 
   state_machine :state, :initial => :new do
