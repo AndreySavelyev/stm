@@ -8,6 +8,8 @@ ru:
           create: "Зарегистрироваться"
         comment:
           create: "Добавить комментарий"
+        session:
+          new: "приииииивет"
       label:
         story:
           title: "Заголовок"
@@ -35,6 +37,7 @@ ru:
     finish: "Закончить"
     accept: "Принять"
     reject: "Отклонить"
+    edit_header: "Редактирование задачи"
 
   filter:
     header: "Фильтр по"
@@ -48,5 +51,18 @@ ru:
     header: "Вы вошли как:"
     logout: "Выйти"
     signup: "Зарегистрироваться"
-    login: "войти"
+    login: "Войти"
+  
+  user:
+    signup: "Регистрация"
+    login: "Войти"
 
+  activerecord:
+      model:
+        user: "Пользователь"
+      attributes:
+        user:
+          email: "Почта"
+          password: "Пароль"
+          password_confirmation: "Подтверждение пароля"
+         
