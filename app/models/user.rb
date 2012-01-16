@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation
   has_secure_password
-  validates :email, :uniquenes => true
+  validates :email, :uniqueness => true
   has_many :stories
   has_many :comments
   
