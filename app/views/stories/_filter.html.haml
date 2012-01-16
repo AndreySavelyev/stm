@@ -1,7 +1,8 @@
 %div
   = form_tag filter_stories_path do
-    Filter by user
+    =t('filter.header')
+    =t('filter.by_user')
     =select_tag :user_id, options_from_collection_for_select(@users, 'id', 'email', params[:user_id]), :include_blank => true
-    and state
+    =t('filter.by_state')
     =select_tag :state, options_for_select(@states, params[:state]), :include_blank => true
-    =submit_tag "Accept", {:class => 'btn'}
+    =submit_tag t('filter.accept'), {:class => 'btn'}

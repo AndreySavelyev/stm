@@ -1,4 +1,4 @@
-%h1 Story: #{@story.title}
+%h1="#{t('story.header')} : #{@story.title}"
 
 %div.alert-message
   Description:
@@ -11,13 +11,13 @@
   %br/
   -case @story.state
   -when "new"
-    =button_to "Start", start_story_path(@story), {:class => 'btn'}
+    =button_to t('story.start'), start_story_path(@story), {:class => 'btn'}
   -when 'started'
-    =button_to "Finish", finish_story_path(@story), {:class => 'btn primary'}
+    =button_to t('story.finish'), finish_story_path(@story), {:class => 'btn primary'}
   -when 'finished'
-    =button_to "Accept", accept_story_path(@story), {:class => 'btn success'}
+    =button_to t('story.accept'), accept_story_path(@story), {:class => 'btn success'}
     or
-    =button_to "Decline", reject_story_path(@story), {:class => 'btn danger'}
+    =button_to t('story.reject'), reject_story_path(@story), {:class => 'btn danger'}
 
 -if @comments.present?
   -@comments.all.each do |comment|
@@ -28,7 +28,7 @@
       %br/
       =comment.user.email
       %div{:style => 'float:right'}
-        =link_to 'Delete', comment, :method => 'delete'
+        =link_to t(:delete), comment, :method => 'delete'
         
 
 %br/
@@ -37,4 +37,4 @@
 =render :partial => 'comments/form'  
   
 %br/
-=link_to "Back to stories", stories_path
+=link_to t('story.back_link'), stories_path

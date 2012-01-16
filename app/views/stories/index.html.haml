@@ -1,12 +1,12 @@
-%h1 Stories
+%h1=t('story.stories')
 
 -if @stories.present?
   %table.zebra-striped.bordered-table
     %thead
       %tr
-        %th Title
-        %th State
-        %th User
+        %th=t('story.title')
+        %th=t('story.state')
+        %th=t('story.user')
         %th
         %th
         %th
@@ -15,13 +15,13 @@
         %td=story.title
         %td=story.state
         %td=story.user.try(:email)
-        %td=link_to "Show", story_path(story)
-        %td=link_to "Edit", edit_story_path(story)
-        %td=link_to "Delete", story, :method => 'delete'
+        %td=link_to t(:show), story_path(story)
+        %td=link_to t(:edit), edit_story_path(story)
+        %td=link_to t(:delete), story, :method => 'delete'
 
 -if current_user
   =render :partial => 'filter', :locals => {:users => @users, :states => @states}
 
 
 %br/
-=link_to "New", new_story_path
+=link_to t(:new), new_story_path

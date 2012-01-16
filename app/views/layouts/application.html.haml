@@ -15,13 +15,13 @@
     %br/
     %div.user_nav
       -if current_user
-        You logged as
+        =t('user_nav.header')
         =current_user.email
         |
-        =link_to "Logout", logout_path
+        =link_to t('user_nav.logout'), logout_path
       -else
-        =link_to "Signup", signup_path
+        =link_to t('user_nav.signup'), signup_path
         or 
-        =link_to "Login", login_path
+        =link_to t('user_nav.login'), login_path
 
     =yield

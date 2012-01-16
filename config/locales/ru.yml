@@ -1,0 +1,48 @@
+ru:
+  helpers:
+      submit:
+        story:
+          create: "Создать задачу"
+          update: "Изменить задачу"
+        user:
+          create: "Зарегистрироваться"
+        comment:
+          create: "Добавить комментарий"
+      label:
+        story:
+          title: "Заголовок"
+          description: "Описание"
+          user_id: "Пользователь"
+
+  edit: "Изменить"
+  show: "Просмотреть"
+  delete: "Удалить"
+  new: "Добавить"
+
+  story:
+    header: "Задача"
+    title: "Заголовок"
+    state: "Состояние"
+    user: "Пользователь"
+    stories: "Список задач"
+    new: "Добавление задачи"
+    back_link: "Вернуться к списку задач"
+    start: "Начать"
+    finish: "Закончить"
+    accept: "Принять"
+    reject: "Отклонить"
+
+  filter:
+    header: "Фильтр по"
+    by_user: "пользователю"
+    by_state: "и/или состоянию"
+    accept: "Применить"    
+
+  processing_error: "Произошла ошибка"
+  
+  user_nav:
+    header: "Вы вошли как:"
+    logout: "Выйти"
+    signup: "Зарегистрироваться"
+    login: "войти"
+
