@@ -13,6 +13,9 @@ ru:
           title: "Заголовок"
           description: "Описание"
           user_id: "Пользователь"
+        comment:
+          content: "Текст"
+          
 
   edit: "Изменить"
   show: "Просмотреть"
@@ -23,6 +26,7 @@ ru:
     header: "Задача"
     title: "Заголовок"
     state: "Состояние"
+    description: "Описание"
     user: "Пользователь"
     stories: "Список задач"
     new: "Добавление задачи"

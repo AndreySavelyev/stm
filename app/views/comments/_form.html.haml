@@ -1,13 +1,13 @@
 =form_for @comment, :html =>{:class => 'form-stacked'} do |f|
   -if @comment.errors.any?
     %div.errors_messages
-    %h3 Form is invalid
+    %h3=t(:processing_error)
     %ul
       -for mess in @comment.errors.full_messages
         %li=mess
-  =f.label :content, 'New comment'
+  =f.label :content
   =f.text_area :content, {:class => 'span7', :rows => 3}
   %br/
   =f.hidden_field :story_id
   %br/
-  =f.submit 'Add comment', {:class => 'btn'}
+  =f.submit nil, {:class => 'btn'}
