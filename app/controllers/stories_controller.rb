@@ -37,8 +37,7 @@ class StoriesController < ApplicationController
   
   def update
     @story = Story.find(params[:id])
-    @story.update_attributes(params[:story])
-    if @story.save
+    if @story.update_attributes(params[:story])
       redirect_to stories_url, :notice => "Story successfully updated"
     else
       @users = User.active
